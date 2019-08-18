@@ -1,0 +1,7 @@
+### Goland ###
+*.bat
+*.exe*
+.idea
+
+## go
+go.sum
