@@ -1,8 +1,8 @@
 package main
 
 import (
-	"designPatternsByGolang/TemplateMethod/impl"
-	"designPatternsByGolang/TemplateMethod/template"
+	"designPatternsByGolang/Template/impl"
+	"designPatternsByGolang/Template/template"
 	"fmt"
 )
 

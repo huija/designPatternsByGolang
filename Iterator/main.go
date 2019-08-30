@@ -1,8 +1,8 @@
 package main
 
 import (
-	"designPatternsByGolang/Iterators/entity"
-	"designPatternsByGolang/Iterators/impl"
+	"designPatternsByGolang/Iterator/entity"
+	"designPatternsByGolang/Iterator/impl"
 	"fmt"
 )
 

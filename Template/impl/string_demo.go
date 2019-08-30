@@ -1,7 +1,7 @@
 package impl
 
 import (
-	"designPatternsByGolang/TemplateMethod/template"
+	"designPatternsByGolang/Template/template"
 	"fmt"
 )
 

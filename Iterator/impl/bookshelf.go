@@ -1,8 +1,8 @@
 package impl
 
 import (
-	"designPatternsByGolang/Iterators/entity"
-	"designPatternsByGolang/Iterators/inter"
+	"designPatternsByGolang/Iterator/entity"
+	"designPatternsByGolang/Iterator/iterator"
 )
 
 // BookShelf 包含很多书, 暴露迭代方法可以迭代到书籍
@@ -34,6 +34,6 @@ func (bookShelf *BookShelf) GetLength() int {
 }
 
 // Iterator 返回当前书架的迭代器对象
-func (bookShelf *BookShelf) Iterator() inter.Iterator {
+func (bookShelf *BookShelf) Iterator() iterator.Iterator {
 	return NewBookShelfIterator(*bookShelf)
 }
