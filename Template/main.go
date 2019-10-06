@@ -1,29 +1,21 @@
 package main
 
 import (
-	"designPatternsByGolang/Template/impl"
+	"designPatternsByGolang/Template/Impl"
 	"designPatternsByGolang/Template/template"
 	"fmt"
 )
 
 func main() {
-	c := NewCharDemo()
+	c := Impl.NewCharDemo()
 	c.Display()
 	fmt.Println()
-	s := NewStringDemo()
+	s := Impl.NewStringDemo()
 	s.Display()
-}
-
-func NewStringDemo() *impl.StringDemo {
-	s := &impl.StringDemo{}
-	template2 := &template.Template{AbstractModel: s}
-	s.Template = template2
-	return s
-}
-
-func NewCharDemo() *impl.CharDemo {
-	c := &impl.CharDemo{}
-	template1 := &template.Template{AbstractModel: c}
-	c.Template = template1
-	return c
+	// 简单实现
+	fmt.Println("下面我认为是golang实现模板模式的正确方式, 而上面则是为了实现而实现")
+	c2 := &Impl.CharDemo{}
+	template.Display(c2)
+	s2 := Impl.StringDemo{}
+	template.Display(s2)
 }
