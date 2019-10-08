@@ -1,4 +1,4 @@
-package Impl
+package impl
 
 import (
 	"designPatternsByGolang/Template/template"
