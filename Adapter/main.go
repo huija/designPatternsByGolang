@@ -11,7 +11,7 @@ func main() {
 	stringDemo.Start()
 	stringDemo.Content()
 	stringDemo.Ending()
-	var stringTargetDemo new2.StringTargetDemo = adapter.MyAdapter{}
+	var stringTargetDemo new2.StringTargetDemo = &adapter.MyAdapter{}
 	stringTargetDemo.StartTarget()
 	stringTargetDemo.ContentTarget()
 	stringTargetDemo.EndingTarget()

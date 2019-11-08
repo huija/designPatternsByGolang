@@ -8,7 +8,7 @@ type Factory struct {
 	AbstractModel
 }
 
-func (F Factory) GetProduct(ownerName string) Product {
+func (F *Factory) GetProduct(ownerName string) Product {
 	return F.CreateProduct(ownerName)
 }
 

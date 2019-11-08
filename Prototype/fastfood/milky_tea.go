@@ -14,7 +14,7 @@ func NewMilkyTea(pearl, milk, water int64) *MilkyTea {
 	return &MilkyTea{pearl, milk, water}
 }
 
-func (m MilkyTea) Cost() {
+func (m *MilkyTea) Cost() {
 	fmt.Println("======================")
 	fmt.Println("你有新的饿了么订单,顾客点了一杯奶茶!")
 	fmt.Printf("使用%d克的珍珠\n", m.pearl)
@@ -24,6 +24,6 @@ func (m MilkyTea) Cost() {
 	fmt.Println("======================")
 }
 
-func (m MilkyTea) CreateClone() Product {
+func (m *MilkyTea) CreateClone() Product {
 	return Clone(m)
 }

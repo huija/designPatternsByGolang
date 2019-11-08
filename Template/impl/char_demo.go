@@ -10,21 +10,21 @@ type CharDemo struct {
 	*template.Template
 }
 
-func (C CharDemo) Start() {
+func (C *CharDemo) Start() {
 	fmt.Print("<<")
 }
 
-func (C CharDemo) Content() {
+func (C *CharDemo) Content() {
 	fmt.Print("h")
 }
 
-func (C CharDemo) Ending() {
+func (C *CharDemo) Ending() {
 	fmt.Print(">>")
 }
 
 // NewCharDemo 模仿构造器, 返回一个实现类
-func NewCharDemo() CharDemo {
-	demo := CharDemo{}
+func NewCharDemo() *CharDemo {
+	demo := &CharDemo{}
 	newTemplate := template.NewTemplate(demo)
 	demo.Template = newTemplate
 	return demo

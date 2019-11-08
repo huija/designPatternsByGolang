@@ -14,7 +14,7 @@ func NewHamburger(bread, meat, vegetable int64) *Hamburger {
 	return &Hamburger{bread, meat, vegetable}
 }
 
-func (h Hamburger) Cost() {
+func (h *Hamburger) Cost() {
 	fmt.Println("======================")
 	fmt.Println("你有新的美团订单,顾客点了一个汉堡包!")
 	fmt.Printf("使用%d片面包\n", h.bread)
@@ -24,6 +24,6 @@ func (h Hamburger) Cost() {
 	fmt.Println("======================")
 }
 
-func (h Hamburger) CreateClone() Product {
+func (h *Hamburger) CreateClone() Product {
 	return Clone(h)
 }

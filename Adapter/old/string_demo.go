@@ -5,12 +5,12 @@ import "fmt"
 type StringDemo struct {
 }
 
-func (S StringDemo) Start() {
+func (S *StringDemo) Start() {
 	fmt.Println("+-----+")
 }
-func (S StringDemo) Content() {
+func (S *StringDemo) Content() {
 	fmt.Println("greetings")
 }
-func (S StringDemo) Ending() {
+func (S *StringDemo) Ending() {
 	fmt.Println("+-----+")
 }

@@ -8,21 +8,21 @@ import (
 // BookShelf 包含很多书, 暴露迭代方法可以迭代到书籍
 type BookShelf struct {
 	index int //这个其实就是size了, 又或者叫endPoint
-	books []entity.Book
+	books []*entity.Book
 }
 
 // NewBookShelf 新建一个书架对象
-func NewBookShelf(books []entity.Book) (bookShelf *BookShelf) {
+func NewBookShelf(books []*entity.Book) (bookShelf *BookShelf) {
 	return &BookShelf{len(books), books}
 }
 
 // GetBook 获取指定下标的书籍 此index非彼index
-func (bookShelf *BookShelf) GetBook(index int) entity.Book {
+func (bookShelf *BookShelf) GetBook(index int) *entity.Book {
 	return bookShelf.books[index]
 }
 
 // AppendBook 添加书籍
-func (bookShelf *BookShelf) AppendBook(book entity.Book) {
+func (bookShelf *BookShelf) AppendBook(book *entity.Book) {
 	bookShelf.books = append(bookShelf.books, book)
 	bookShelf.index++
 }

@@ -17,6 +17,6 @@ func main() {
 	c2 := &impl.CharDemo{}
 	template.Display(c2)
 	fmt.Println()
-	s2 := impl.StringDemo{}
+	s2 := &impl.StringDemo{}
 	template.Display(s2)
 }

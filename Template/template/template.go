@@ -19,7 +19,7 @@ type Implement interface {
 	Ending()
 }
 
-func (T Template) Display() {
+func (T *Template) Display() {
 	T.Start()
 	for i := 0; i < 3; i++ {
 		T.Content()

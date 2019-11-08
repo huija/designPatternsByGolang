@@ -5,70 +5,77 @@ import (
 	"os"
 )
 
-// S2H 从结构体转为html的抽象
+// Item 零件抽象
 type Item interface {
 	MakeHtml() string
 }
 
-// Item 抽象零件, 标题
-type ItemWrap struct {
-	Item
+type Page interface {
+	Add(item Item)
+	Output()
+	MakeHtml() string
+}
+
+type Tray interface {
+	Add(item Item)
+	MakeHtml() string
+}
+
+type Link interface {
+	MakeHtml() string
+}
+
+// LinkImpl 超链接
+type LinkImpl struct {
+	Link
 	caption string
+	url     string
 }
 
-func NewItemWrap(caption string, item Item) ItemWrap {
-	return ItemWrap{item, caption}
+func NewLinkImpl(caption, url string, l Link) *LinkImpl {
+	link := LinkImpl{caption: caption, url: url}
+	link.Link = l
+	return &link
 }
 
-// Link 超链接
-type Link struct {
-	ItemWrap
-	url string
+// TrayImpl 超链接的外包装
+type TrayImpl struct {
+	Tray
+	caption string
+	tray    []Item
 }
 
-func NewLink(caption, url string) Link {
-	link := Link{url: url}
-	link.ItemWrap = NewItemWrap(caption, link)
-	return link
+func NewTrayImpl(caption string, t Tray) *TrayImpl {
+	tray := TrayImpl{caption: caption, tray: make([]Item, 0)}
+	tray.Tray = t
+	return &tray
 }
 
-// Tray 超链接的外包装
-type Tray struct {
-	ItemWrap
-	tray []Item
-}
-
-func NewTray(caption string) Tray {
-	tray := Tray{tray: make([]Item, 0)}
-	tray.ItemWrap = NewItemWrap(caption, tray)
-	return tray
-}
-
-func (T Tray) Add(i Item) {
+func (T *TrayImpl) Add(i Item) {
 	T.tray = append(T.tray, i)
 }
 
-// Page 抽象产品, 最终的页面
-type Page struct {
-	ItemWrap
+// PageImpl 抽象产品, 最终的页面
+type PageImpl struct {
+	Page
 	title   string
 	author  string
 	content []Item
 }
 
-func NewPage(title, author string) Page {
-	page := Page{title: title, author: author, content: make([]Item, 0)}
-	page.ItemWrap = NewItemWrap("", page)
-	return page
+func NewPageImpl(title, author string, pi Page) *PageImpl {
+	page := PageImpl{title: title, author: author, content: make([]Item, 0)}
+	page.Page = pi
+	return &page
 }
 
-func (P Page) Add(i Item) {
+func (P *PageImpl) Add(i Item) {
 	P.content = append(P.content, i)
 }
 
-func (P Page) Output() {
+func (P *PageImpl) Output() {
 	fileName := P.title + ".html"
-	if file, err := os.OpenFile(fileName, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0644); err != nil {
+	if file, err := os.OpenFile(fileName, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0644); err == nil {
 		_, _ = io.WriteString(file, P.MakeHtml())
 	}
 }
