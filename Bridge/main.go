@@ -10,11 +10,8 @@ import (
 
 func main() {
 	d1 := function.NewDisplay(impl.NewStringDisplayImpl("Hello, China."))
-	d2 := function.NewCountDisplay(impl.NewStringDisplayImpl("Hello, World."));
-	d3 := function.NewCountDisplay(impl.NewStringDisplayImpl("Hello, Universe."));
+	d2 := function.NewCountDisplay(impl.NewStringDisplayImpl("Hello, World."))
 	d1.FinalDisplay()
 	d2.FinalDisplay()
 	d2.MultiDisplay(5)
-	d3.FinalDisplay()
-	d3.MultiDisplay(5)
 }
