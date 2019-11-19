@@ -1,16 +1,21 @@
-package visitor
+package dnf2
+
+import (
+	"designPatternsByGolang/Visitor/entry2"
+	"designPatternsByGolang/Visitor/visitor"
+)
 
 type Dir struct {
-	*EntrySuper
+	*entry2.EntrySuper
 	name    string
-	entries []Entry
+	entries []entry2.Entry
 }
 
 func NewDir(name string) *Dir {
 	dir := &Dir{name: name}
-	newEntry := NewEntry(dir)
+	newEntry := entry2.NewEntry(dir)
 	dir.EntrySuper = newEntry
-	dir.entries = make([]Entry, 0)
+	dir.entries = make([]entry2.Entry, 0)
 	return dir
 }
 
@@ -26,11 +31,15 @@ func (D *Dir) GetSize() int {
 	return size
 }
 
-func (D *Dir) Add(entry Entry) {
+func (D *Dir) Add(entry entry2.Entry) {
 	D.entries = append(D.entries, entry)
 }
 
 // TODO 访客模式, 授权访问
-func (D *Dir) Accept(v Visitor) {
+func (D *Dir) Accept(v visitor.Visitor) {
 	v.Visit(D)
+}
+
+func (D *Dir) GetEntries() []entry2.Entry {
+	return D.entries
 }

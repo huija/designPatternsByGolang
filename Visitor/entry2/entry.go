@@ -1,16 +1,16 @@
-package visitor
+package entry2
 
 import (
+	"designPatternsByGolang/Visitor/visitor"
 	"errors"
 	"github.com/gokangaroo/common/utils"
 )
 
 // entry2 统一抽象
 type Entry interface {
-	Element
+	visitor.Element
 	GetName() string
 	GetSize() int
-	PrintData(prefix string)
 }
 
 type EntrySuper struct {
