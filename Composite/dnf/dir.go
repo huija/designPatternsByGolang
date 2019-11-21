@@ -3,6 +3,7 @@ package dnf
 import (
 	"designPatternsByGolang/Composite/entry"
 	"fmt"
+	"github.com/gokangaroo/common/utils"
 )
 
 type Dir struct {
@@ -36,7 +37,7 @@ func (D *Dir) Add(entry entry.Entry) {
 }
 
 func (D *Dir) PrintData(prefix string) {
-	fmt.Println(prefix + "/" + D.ToString())
+	fmt.Println(prefix + "/" + utils.ToString(D))
 	for _, value := range D.entries {
 		value.PrintData(prefix + "/" + value.GetName())
 	}

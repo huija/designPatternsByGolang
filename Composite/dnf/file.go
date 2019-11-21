@@ -3,6 +3,7 @@ package dnf
 import (
 	"designPatternsByGolang/Composite/entry"
 	"fmt"
+	"github.com/gokangaroo/common/utils"
 )
 
 type File struct {
@@ -27,5 +28,5 @@ func (F *File) GetSize() int {
 }
 
 func (F *File) PrintData(prefix string) {
-	fmt.Println(prefix + "/" + F.ToString())
+	fmt.Println(prefix + "/" + utils.ToString(F))
 }

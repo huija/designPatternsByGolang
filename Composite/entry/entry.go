@@ -2,7 +2,7 @@ package entry
 
 import (
 	"errors"
-	"github.com/gokangaroo/common/utils"
+	"fmt"
 )
 
 // entry 统一抽象
@@ -28,6 +28,6 @@ func (E *EntrySuper) Add(entry Entry) error {
 	return errors.New("file can not add file")
 }
 
-func (E *EntrySuper) ToString() string {
-	return E.GetName() + "(" + utils.ToString(E.GetSize()) + ")"
+func (E *EntrySuper) String() string {
+	return E.GetName() + "(" + fmt.Sprintf("%d", E.GetSize()) + ")"
 }
